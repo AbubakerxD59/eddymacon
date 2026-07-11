@@ -1,0 +1,115 @@
+
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EDDY MACON | POWER. SCALE. LEGACY.</title>
+    <meta name="description" content="Strategic advisor to the global 0.1%. Scaling eight-figure exits and forging generational wealth through the Macon Protocol.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              serif: ['Playfair Display', 'serif'],
+            },
+            colors: {
+              gold: {
+                400: '#E5C158',
+                500: '#D4AF37', // Authentic Gold
+                600: '#C5A028',
+                700: '#B8860B',
+              },
+              brand: {
+                dark: '#020202', // Deeper black
+                gray: '#0A0A0A',
+                accent: '#111111',
+              }
+            },
+            animation: {
+              'reveal-up': 'revealUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+              'pulse-gold': 'pulseGold 4s infinite',
+            },
+            keyframes: {
+              revealUp: {
+                '0%': { opacity: '0', transform: 'translateY(100px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' },
+              },
+              pulseGold: {
+                '0%, 100%': { opacity: '0.2' },
+                '50%': { opacity: '0.6' },
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      body {
+        background-color: #020202;
+        color: #FFFFFF;
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+      }
+      .glass {
+        background: rgba(2, 2, 2, 0.85);
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
+      }
+      .text-mask {
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-image: linear-gradient(135deg, #FFFFFF 0%, #A0A0A0 100%);
+      }
+      .gold-gradient {
+        background: linear-gradient(135deg, #D4AF37 0%, #F9E79F 45%, #B8860B 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .gold-border {
+        border-image: linear-gradient(to right, #D4AF37, transparent) 1;
+      }
+      .perspective-text {
+        transform: perspective(1000px) rotateX(10deg);
+      }
+      ::-webkit-scrollbar { width: 4px; }
+      ::-webkit-scrollbar-track { background: #020202; }
+      ::-webkit-scrollbar-thumb { background: #D4AF37; }
+      .section-line { height: 1px; background: linear-gradient(to right, rgba(212,175,55,0.3), transparent); }
+      
+      /* Custom Cursor Element (Optional styling) */
+      .custom-cursor {
+        width: 20px;
+        height: 20px;
+        border: 1px solid #D4AF37;
+        border-radius: 50%;
+        position: fixed;
+        pointer-events: none;
+        z-index: 9999;
+        transition: transform 0.1s ease-out;
+      }
+    </style>
+
+  <link rel="stylesheet" href="/index.css">
+    <script type="importmap">
+    {
+      "imports": {
+        "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
+        "react/": "https://esm.sh/react@^19.2.3/",
+        "react": "https://esm.sh/react@^19.2.3",
+        "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+        "@google/genai": "https://esm.sh/@google/genai@^1.35.0"
+      }
+    }
+    </script>
+  <script type="module" crossorigin src="/assets/index-BpjZs8z7.js"></script>
+</head>
+  <body>
+    <div id="root"></div>
+</body>
+</html>
