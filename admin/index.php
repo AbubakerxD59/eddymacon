@@ -280,10 +280,36 @@ $authenticated = admin_is_authenticated();
               placeholder="Enter your password"
             />
           </div>
-          <button type="submit" class="w-full bg-gold-500 text-black py-4 font-black uppercase tracking-widest hover:bg-white transition-all">
-            Log In
+          <button type="submit" id="em-login-btn" class="w-full bg-gold-500 text-black py-4 font-black uppercase tracking-widest hover:bg-white transition-all inline-flex items-center justify-center gap-2">
+            <span id="em-login-label">Log In</span>
           </button>
         </form>
+        <script>
+          (function () {
+            var form = document.querySelector('form[method="post"]');
+            if (!form) return;
+            form.addEventListener('submit', function () {
+              var btn = document.getElementById('em-login-btn');
+              var label = document.getElementById('em-login-label');
+              if (!btn || btn.disabled) return;
+              btn.disabled = true;
+              btn.classList.add('opacity-70', 'cursor-wait');
+              if (label) {
+                label.textContent = 'Please wait...';
+              }
+              if (!document.getElementById('em-login-spinner')) {
+                var sp = document.createElement('span');
+                sp.id = 'em-login-spinner';
+                sp.setAttribute('aria-hidden', 'true');
+                sp.style.cssText = 'width:16px;height:16px;border:2px solid rgba(0,0,0,.25);border-top-color:#000;border-radius:50%;display:inline-block;animation:em-spin .7s linear infinite';
+                btn.insertBefore(sp, label);
+              }
+            });
+            var style = document.createElement('style');
+            style.textContent = '@keyframes em-spin{to{transform:rotate(360deg)}}';
+            document.head.appendChild(style);
+          })();
+        </script>
         <a href="../" class="inline-block text-[10px] uppercase tracking-widest text-gray-600 hover:text-gold-500 transition-colors">← Return to site</a>
       </div>
     </div>
