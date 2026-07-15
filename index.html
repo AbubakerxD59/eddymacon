@@ -5,6 +5,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>EDDY MACON | POWER. SCALE. LEGACY.</title>
+    <script>
+      // Legacy ?mode=admin → /admin
+      (function () {
+        if (new URLSearchParams(location.search).get('mode') !== 'admin') return;
+        var base = location.pathname.replace(/\/index\.html?$/, '').replace(/\/$/, '');
+        location.replace(base + '/admin/');
+      })();
+    </script>
     <meta name="description" content="Eddy Macon is a Real Estate Investor, Author, and entrepreneur focused on helping individuals understand how real estate deals are built from analysis to execution, from Fix-and-Flip to Rental Investments, Eddy’s approach combines disciplined Analysis,Market Insights and practical Education.Want to scale your portfolio? Subscribe in our  Community and let’s build something extraordinary together">
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17871054383"></script>
@@ -100,16 +108,39 @@
         transform: perspective(1000px) rotateX(10deg);
       }
       ::-webkit-scrollbar { width: 4px; }
-      ::-webkit-scrollbar-track { background: #020202; }
-      ::-webkit-scrollbar-thumb { background: #D4AF37; }
+      ::-webkit-scrollbar-track { background: #000814; }
+      ::-webkit-scrollbar-thumb { background: #00F5FF; }
+      ::-webkit-scrollbar-thumb:hover { background: #66faff; }
+      html {
+        scrollbar-width: thin;
+        scrollbar-color: #00F5FF #000814;
+      }
       .section-line { height: 1px; background: linear-gradient(to right, rgba(212,175,55,0.3), transparent); }
       
       .theme-beta { background-color: #F8F8F8; color: #111111; }
       .theme-gamma { background-color: #000814; color: #FFFFFF; }
+
+      /* Responsive main-site navbar */
+      .em-site-nav {
+        -webkit-backdrop-filter: blur(12px);
+        backdrop-filter: blur(12px);
+      }
+      .em-site-mobile-nav {
+        overscroll-behavior: contain;
+      }
+      .em-site-mobile-nav a {
+        -webkit-tap-highlight-color: transparent;
+      }
+      @media (max-width: 639px) {
+        .em-site-nav {
+          padding-top: 0.85rem;
+          padding-bottom: 0.85rem;
+        }
+      }
     </style>
 
-  <link rel="stylesheet" href="/index.css">
-    <script type="importmap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+  <script type="importmap">
     {
       "imports": {
         "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
@@ -121,7 +152,17 @@
       }
     }
     </script>
-  <script type="module" crossorigin src="/assets/index-Bpoe2-CA.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+  <script>
+    toastr.options = {
+      closeButton: true,
+      progressBar: true,
+      positionClass: 'toast-top-right',
+      timeOut: 4000,
+    };
+  </script>
+  <script type="module" crossorigin src="assets/index-Bpoe2-CA.js"></script>
 </head>
   <body>
     <div id="root"></div>

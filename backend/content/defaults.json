@@ -1,0 +1,110 @@
+{
+  "activeTemplate": "alpha",
+  "navigation": {
+    "logoFirst": "EDDY",
+    "logoLast": "MACON",
+    "links": [
+      {
+        "label": "HOME",
+        "href": "#home"
+      },
+      {
+        "label": "APPROACH",
+        "href": "#approach"
+      },
+      {
+        "label": "INVESTMENTS",
+        "href": "#investments"
+      },
+      {
+        "label": "CONTACT",
+        "href": "#contact"
+      }
+    ],
+    "cta": "INITIATE"
+  },
+  "hero": {
+    "badge": "Investor • Author • Entrepreneur",
+    "titleLine1": "Analysis to",
+    "titleLine2": "Execution.",
+    "description": "Eddy Macon is a Real Estate Investor, Author, and entrepreneur focused on helping individuals understand how real estate deals are built from analysis to execution.",
+    "ctaPrimary": "GET THE BOOK",
+    "ctaSecondary": "ANALYZE DEAL",
+    "image": "input_file_1.png"
+  },
+  "approach": {
+    "badge": "The Macon Approach",
+    "title": "Disciplined Numbers.",
+    "description": "His work combines disciplined numbers and practical education to help investors avoid costly mistakes.",
+    "image": "input_file_0.png",
+    "missionTitle": "The Mission",
+    "missionValue": "Practical Education",
+    "cards": [
+      {
+        "icon": "calculator",
+        "title": "Risk Mitigation",
+        "desc": "Analyzing margins with a builder's eye to ensure profit transforms to reality."
+      },
+      {
+        "icon": "mic",
+        "title": "Public Insight",
+        "desc": "Educating investors through workshops and strategic literature."
+      }
+    ]
+  },
+  "investments": {
+    "badge": "Investments / Education",
+    "title": "Scaling Assets.",
+    "cta": "VIEW CURRICULUM",
+    "items": [
+      {
+        "id": 1,
+        "title": "Fix-and-Flip",
+        "desc": "Tactical acquisition and high-velocity asset turnaround strategies.",
+        "category": "INVESTMENTS",
+        "icon": "building"
+      },
+      {
+        "id": 2,
+        "title": "Rental Wealth",
+        "desc": "Building sustainable generational wealth through rental portfolios.",
+        "category": "INVESTMENTS",
+        "icon": "home"
+      },
+      {
+        "id": 3,
+        "title": "Deal Structuring",
+        "desc": "The advanced mechanics of complex deal analysis and financing.",
+        "category": "EDUCATION",
+        "icon": "calculator"
+      },
+      {
+        "id": 4,
+        "title": "Bid to Build",
+        "desc": "Comprehensive education designed to eliminate investor error.",
+        "category": "EDUCATION",
+        "icon": "book"
+      }
+    ]
+  },
+  "contact": {
+    "badge": "Contact Strategy Team",
+    "title": "Dictate Execution.",
+    "description": "High-net-worth performance requires high-net-worth intelligence. If you are serious about scale, initiate intake.",
+    "ctaPrimary": "INITIATE INTAKE",
+    "ctaSecondary": "THE BLUEPRINT",
+    "email": "INFO@EDDYMACON.COM",
+    "legalNote": "Arollz Partners & Vault Strategies",
+    "footerBio": "Forging generational wealth through systematic real estate aggression and numbers-based analysis."
+  },
+  "socials": {
+    "linkedin": "#",
+    "instagram": "#",
+    "twitter": "#",
+    "youtube": "#"
+  },
+  "ai": {
+    "systemInstruction": "You are the AI Liaison for Eddy Macon, a Real Estate Investor and Author of 'From Bid to Build'. Your goal is to provide disciplined, numbers-focused insights into real estate. Tone: High-status, professional, and authoritative.",
+    "greeting": "Protocol active. I am Eddy Macon's Digital Liaison. How shall we proceed?"
+  }
+}

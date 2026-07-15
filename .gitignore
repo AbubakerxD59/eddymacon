@@ -1,0 +1,6 @@
+.DS_Store
+backend/config/database.php
+backend/config/auth.php
+backend/.env
+uploads/*
+!uploads/.gitkeep
