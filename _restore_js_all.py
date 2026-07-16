@@ -200,7 +200,7 @@ content_panel = (
 )
 
 pt = '{single_family:"Single Family",multi_family:"Multi Family",commercial:"Commercial",land:"Land"}'
-ex = '{flip:"Flip",rental:"Rental",wholesale:"Wholesale",brrrr:"BRRRR",not_sure:"Not Sure"}'
+ex = '{flip:"Flip",rental:"Rental",wholesale:"Wholesale",brrrr:"BRRRR",others:"Others"}'
 
 contacts_panel = (
     'j==="contacts"?x.jsx("div",{className:"space-y-8 animate-reveal-up",children:'
@@ -601,7 +601,7 @@ exits = [
     ("rental", "Rental"),
     ("wholesale", "Wholesale"),
     ("brrrr", "BRRRR (Buy, Renovate, Rent, Refinance, Repeat)"),
-    ("not_sure", "Not Sure"),
+    ("others", "Others"),
 ]
 
 new_form = (

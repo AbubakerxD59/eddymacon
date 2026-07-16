@@ -33,7 +33,7 @@ $exitStrategy = trim((string) ($data['preferred_exit_strategy'] ?? ''));
 $query = trim((string) ($data['query'] ?? ''));
 
 $allowedTypes = ['single_family', 'multi_family', 'commercial', 'land'];
-$allowedExits = ['flip', 'rental', 'wholesale', 'brrrr', 'not_sure'];
+$allowedExits = ['flip', 'rental', 'wholesale', 'brrrr', 'others'];
 
 if (
     $name === '' || $phone === '' || $email === '' || $propertyAddress === ''
