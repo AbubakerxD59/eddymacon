@@ -1,5 +1,10 @@
 #!/usr/bin/env python3
-"""Restore all PHP-backed frontend patches onto the original minified bundle."""
+"""Restore all PHP-backed frontend patches onto the original minified bundle.
+
+After a successful restore from a pristine bundle, also run:
+  python3 _patch_books.py
+to add Books CRUD (admin nav + public sale links).
+"""
 from pathlib import Path
 import re
 import subprocess
