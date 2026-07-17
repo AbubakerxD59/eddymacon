@@ -1,0 +1,1727 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Events | EDDY MACON</title>
+    <meta name="description" content="Upcoming events with Eddy Macon — dates, locations, and times." />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=IBM+Plex+Mono:wght@400;700&display=swap" rel="stylesheet" />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              serif: ['Playfair Display', 'serif'],
+              mono: ['IBM Plex Mono', 'monospace'],
+            },
+            colors: {
+              gold: {
+                400: '#E5C158',
+                500: '#D4AF37',
+                600: '#C5A028',
+                700: '#B8860B',
+              },
+              brand: {
+                dark: '#020202',
+                gray: '#0A0A0A',
+                accent: '#111111',
+                cyan: '#00F5FF',
+                emerald: '#00FF41',
+              },
+            },
+            animation: {
+              'reveal-up': 'revealUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+            },
+            keyframes: {
+              revealUp: {
+                '0%': { opacity: '0', transform: 'translateY(100px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' },
+              },
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      body {
+        background-color: #020202;
+        color: #ffffff;
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+        transition: background-color 0.8s ease, color 0.8s ease;
+      }
+      body.em-drawer-open { overflow: hidden; }
+      .glass {
+        background: rgba(2, 2, 2, 0.85);
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
+      }
+      .gold-gradient {
+        background: linear-gradient(135deg, #d4af37 0%, #f9e79f 45%, #b8860b 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .cyan-gradient {
+        background: linear-gradient(135deg, #00f5ff 0%, #00ff41 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .section-line {
+        height: 1px;
+        background: linear-gradient(to right, rgba(212, 175, 55, 0.35), transparent);
+      }
+      .theme-beta .section-line {
+        background: linear-gradient(to right, rgba(17, 17, 17, 0.25), transparent);
+      }
+      .theme-gamma .section-line {
+        background: linear-gradient(to right, rgba(0, 245, 255, 0.35), transparent);
+      }
+      ::-webkit-scrollbar { width: 4px; }
+      ::-webkit-scrollbar-track { background: #000814; }
+      ::-webkit-scrollbar-thumb { background: #00f5ff; }
+      html {
+        scrollbar-width: thin;
+        scrollbar-color: #00f5ff #000814;
+      }
+      .theme-beta { background-color: #f8f8f8; color: #111111; }
+      .theme-gamma { background-color: #000814; color: #ffffff; }
+      .em-site-nav {
+        -webkit-backdrop-filter: blur(12px);
+        backdrop-filter: blur(12px);
+      }
+      .em-site-logo {
+        font-family: 'Playfair Display', Georgia, serif !important;
+      }
+      .em-site-mobile-nav { overscroll-behavior: contain; }
+      .em-site-mobile-nav a { -webkit-tap-highlight-color: transparent; }
+      @media (max-width: 639px) {
+        .em-site-nav { padding-top: 0.85rem; padding-bottom: 0.85rem; }
+      }
+      .em-event-card {
+        background: linear-gradient(160deg, rgba(17, 17, 17, 0.95) 0%, rgba(2, 2, 2, 0.98) 100%);
+        border: 1px solid rgba(212, 175, 55, 0.22);
+        border-radius: 1rem;
+        max-width: 20rem;
+        cursor: pointer;
+        transition: border-color 0.35s ease, transform 0.35s ease, box-shadow 0.35s ease;
+      }
+      .theme-beta .em-event-card {
+        background: #fff;
+        border-color: rgba(17, 17, 17, 0.12);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+      }
+      .theme-gamma .em-event-card {
+        background: rgba(0, 8, 20, 0.95);
+        border-color: rgba(0, 245, 255, 0.22);
+      }
+      .em-event-card:hover {
+        border-color: rgba(212, 175, 55, 0.5);
+        transform: translateY(-2px);
+        box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
+      }
+      .theme-beta .em-event-card:hover { border-color: rgba(17, 17, 17, 0.35); }
+      .theme-gamma .em-event-card:hover { border-color: rgba(0, 245, 255, 0.5); }
+      .em-event-card:focus-visible {
+        outline: 2px solid #d4af37;
+        outline-offset: 3px;
+      }
+      .theme-gamma .em-event-card:focus-visible { outline-color: #00f5ff; }
+      .theme-beta .em-event-card:focus-visible { outline-color: #111; }
+      .em-cover {
+        background: radial-gradient(ellipse at center, rgba(212, 175, 55, 0.12), transparent 70%), #0a0a0a;
+      }
+      .em-meta-icon {
+        width: 0.95rem;
+        height: 0.95rem;
+        flex-shrink: 0;
+        color: #d4af37;
+        opacity: 0.9;
+      }
+      .theme-beta .em-meta-icon { color: #111; }
+      .theme-gamma .em-meta-icon { color: #00f5ff; }
+      .em-drawer-backdrop {
+        position: fixed;
+        inset: 0;
+        z-index: 180;
+        background: rgba(0, 0, 0, 0.65);
+        backdrop-filter: blur(4px);
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+      }
+      .em-drawer-backdrop.is-open { opacity: 1; visibility: visible; }
+      .em-drawer {
+        position: fixed;
+        top: 0;
+        right: 0;
+        z-index: 190;
+        width: min(100vw, 28rem);
+        height: 100%;
+        background: #0a0a0a;
+        color: #fff;
+        border-left: 1px solid rgba(212, 175, 55, 0.22);
+        box-shadow: -20px 0 60px rgba(0, 0, 0, 0.55);
+        transform: translateX(100%);
+        transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        display: flex;
+        flex-direction: column;
+      }
+      .theme-gamma .em-drawer { border-left-color: rgba(0, 245, 255, 0.22); background: #000814; }
+      .em-drawer.is-open { transform: translateX(0); }
+      .em-drawer-body {
+        overflow-y: auto;
+        overscroll-behavior: contain;
+        flex: 1;
+      }
+      .em-event-description .ql-size-small { font-size: 0.75em; }
+      .em-event-description .ql-size-large { font-size: 1.5em; }
+      .em-event-description .ql-size-huge { font-size: 2.5em; }
+      .em-masonry { column-count: 2; column-gap: 0.6rem; }
+      .em-masonry-item {
+        break-inside: avoid;
+        margin: 0 0 0.6rem;
+        display: block;
+        width: 100%;
+        border: 0;
+        padding: 0;
+        border-radius: 0.65rem;
+        overflow: hidden;
+        background: #111;
+        text-align: left;
+      }
+      .em-masonry-item img {
+        display: block;
+        width: 100%;
+        height: auto;
+        cursor: zoom-in;
+        transition: transform 0.25s ease, opacity 0.25s ease;
+      }
+      .em-masonry-item img:hover { opacity: 0.92; transform: scale(1.02); }
+      .em-masonry-item video {
+        display: block;
+        width: 100%;
+        height: auto;
+        background: #000;
+      }
+      .em-lightbox {
+        position: fixed;
+        inset: 0;
+        z-index: 220;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1.25rem;
+        background: rgba(0, 0, 0, 0.88);
+        backdrop-filter: blur(8px);
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.25s ease, visibility 0.25s ease;
+      }
+      .em-lightbox.is-open { opacity: 1; visibility: visible; }
+      .em-lightbox img {
+        max-width: min(96vw, 1100px);
+        max-height: 90vh;
+        width: auto;
+        height: auto;
+        object-fit: contain;
+        border-radius: 0.5rem;
+        box-shadow: 0 24px 80px rgba(0, 0, 0, 0.65);
+        transform: scale(0.96);
+        transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .em-lightbox.is-open img { transform: scale(1); }
+      .em-lightbox-close {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        z-index: 1;
+        padding: 0.5rem;
+        color: rgba(255, 255, 255, 0.7);
+        background: transparent;
+        border: 0;
+        cursor: pointer;
+      }
+      .em-lightbox-close:hover { color: #fff; }
+      .em-month-group {
+        width: 100%;
+      }
+      .em-month-heading {
+        width: fit-content;
+        font-size: 0.7rem;
+        font-weight: 900;
+        letter-spacing: 0.35em;
+        text-transform: uppercase;
+        margin-bottom: 1.25rem;
+        padding-bottom: 0.75rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .theme-beta .em-month-heading {
+        border-bottom-color: rgba(17, 17, 17, 0.12);
+      }
+      .theme-gamma .em-month-heading {
+        border-bottom-color: rgba(0, 245, 255, 0.2);
+      }
+      .em-cta-btn {
+        padding: 1rem 2rem;
+        text-transform: uppercase;
+        font-weight: 900;
+        letter-spacing: 0.2em;
+        font-size: 10px;
+        transition: all 0.5s;
+        border-radius: 2px;
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+      }
+      .em-join-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.4rem;
+        border: 1px solid rgba(212, 175, 55, 0.35);
+        color: #d4af37;
+        background: transparent;
+        border-radius: 999px;
+        padding: 0.4rem 0.75rem;
+        font-size: 10px;
+        font-weight: 900;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+        cursor: pointer;
+      }
+      .em-join-btn:hover {
+        background: #d4af37;
+        color: #000;
+        border-color: #d4af37;
+      }
+      .theme-beta .em-join-btn {
+        border-color: rgba(17, 17, 17, 0.25);
+        color: #111;
+      }
+      .theme-beta .em-join-btn:hover {
+        background: #111;
+        color: #fff;
+        border-color: #111;
+      }
+      .theme-gamma .em-join-btn {
+        border-color: rgba(0, 245, 255, 0.35);
+        color: #00f5ff;
+      }
+      .theme-gamma .em-join-btn:hover {
+        background: #00f5ff;
+        color: #000;
+        border-color: #00f5ff;
+      }
+      .em-join-modal {
+        position: fixed;
+        inset: 0;
+        z-index: 240;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1.5rem;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+      }
+      .em-join-modal.is-open {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+      }
+      .em-join-modal-backdrop {
+        position: absolute;
+        inset: 0;
+        background: rgba(2, 2, 2, 0.98);
+        backdrop-filter: blur(64px);
+        -webkit-backdrop-filter: blur(64px);
+        opacity: 0;
+        transition: opacity 0.35s ease;
+      }
+      .em-join-modal.is-open .em-join-modal-backdrop {
+        opacity: 1;
+      }
+      .em-join-dialog {
+        position: relative;
+        width: 100%;
+        max-width: 56rem;
+        max-height: 92vh;
+        overflow-y: auto;
+        padding: 2rem;
+        border-radius: 2px;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.55);
+      }
+      .em-join-modal.is-open .em-join-dialog {
+        animation: emJoinRevealUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
+      @keyframes emJoinRevealUp {
+        0% { opacity: 0; transform: translateY(100px); }
+        100% { opacity: 1; transform: translateY(0); }
+      }
+      @media (min-width: 640px) {
+        .em-join-dialog {
+          padding: 4rem;
+        }
+      }
+      .em-join-dialog label {
+        display: block;
+        font-size: 10px;
+        font-weight: 900;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: #6b7280;
+      }
+      .em-join-dialog input {
+        width: 100%;
+        background: transparent;
+        border: 0;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        padding: 0.75rem 0;
+        font-size: 1rem;
+        font-style: italic;
+        outline: none;
+      }
+      @media (min-width: 640px) {
+        .em-join-dialog input {
+          font-size: 1.125rem;
+        }
+      }
+      .em-join-input-alpha {
+        border-color: rgba(255, 255, 255, 0.1);
+        color: #fff;
+      }
+      .em-join-input-beta {
+        border-color: rgba(0, 0, 0, 0.2);
+        color: #111;
+      }
+      .em-join-input-gamma {
+        border-color: rgba(0, 245, 255, 0.2);
+        color: #00f5ff;
+        font-family: 'IBM Plex Mono', monospace;
+      }
+      #em-bookme-date,
+      #em-bookme-time {
+        cursor: pointer;
+      }
+      .flatpickr-calendar {
+        z-index: 4000 !important;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55);
+        font-family: Inter, sans-serif;
+      }
+      .flatpickr-months .flatpickr-month,
+      .flatpickr-current-month .flatpickr-monthDropdown-months,
+      .flatpickr-current-month input.cur-year {
+        color: #d4af37;
+        fill: #d4af37;
+      }
+      .flatpickr-months .flatpickr-prev-month,
+      .flatpickr-months .flatpickr-next-month {
+        fill: #d4af37;
+        color: #d4af37;
+      }
+      .flatpickr-months .flatpickr-prev-month:hover svg,
+      .flatpickr-months .flatpickr-next-month:hover svg {
+        fill: #fff;
+      }
+      .flatpickr-weekdays .flatpickr-weekday {
+        color: #888;
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 10px;
+      }
+      .flatpickr-day.selected,
+      .flatpickr-day.startRange,
+      .flatpickr-day.endRange,
+      .flatpickr-day.selected:hover,
+      .flatpickr-day.selected:focus {
+        background: #d4af37;
+        border-color: #d4af37;
+        color: #000;
+        font-weight: 700;
+      }
+      .flatpickr-day:hover {
+        background: rgba(212, 175, 55, 0.2);
+        border-color: transparent;
+        color: #d4af37;
+      }
+      .flatpickr-day.today {
+        border-color: #d4af37;
+      }
+      .flatpickr-day.today:hover,
+      .flatpickr-day.today:focus {
+        background: rgba(212, 175, 55, 0.2);
+        color: #d4af37;
+        border-color: #d4af37;
+      }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+    <link rel="stylesheet" href="../admin/vendor/flatpickr/flatpickr.min.css" />
+    <link rel="stylesheet" href="../admin/vendor/flatpickr/themes/dark.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="../admin/vendor/flatpickr/flatpickr.min.js"></script>
+    <script>
+      toastr.options = {
+        closeButton: true,
+        progressBar: true,
+        positionClass: 'toast-top-right',
+        timeOut: 4000,
+      };
+    </script>
+  </head>
+  <body class="font-sans bg-brand-dark text-white">
+    <div id="em-site-nav-root"></div>
+    <div id="em-site-mobile-nav-root"></div>
+
+    <main class="pt-28 sm:pt-32 lg:pt-40 pb-20 sm:pb-28">
+      <div class="max-w-[1700px] mx-auto px-4 sm:px-8 lg:px-20">
+        <section id="em-hire" class="mb-16 sm:mb-20 pb-12 sm:pb-16 border-b border-white/10 max-w-3xl">
+          <p id="em-hire-badge" class="text-[10px] sm:text-xs font-black tracking-[0.35em] uppercase text-gold-500 mb-4">Hire Eddy Macon</p>
+          <h2 id="em-hire-title" class="font-serif text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight mb-4">
+            Ready to work with Eddy?
+          </h2>
+          <p id="em-hire-lead" class="text-gray-400 text-sm sm:text-base leading-relaxed max-w-xl mb-8">
+            Book Eddy Macon for consulting, speaking, or private strategy sessions — tell us who you are and where to reach you.
+          </p>
+          <button type="button" id="em-bookme-open" class="em-cta-btn inline-flex items-center justify-center px-10 py-5 text-sm bg-gold-500 text-black hover:bg-white">
+            Book Me
+          </button>
+        </section>
+
+        <header class="mb-12 max-w-3xl">
+          <p id="em-events-badge" class="text-[10px] sm:text-xs font-black tracking-[0.35em] uppercase text-gold-500 mb-4">Calendar</p>
+          <h1 id="em-events-title" class="font-serif text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight mb-4">
+            <span class="gold-gradient">Events</span>
+          </h1>
+          <p id="em-events-lead" class="text-gray-400 text-sm sm:text-base leading-relaxed max-w-xl">
+            Workshops, sessions, and appearances — dates, locations, and times in one place.
+          </p>
+        </header>
+
+        <div id="em-events-status" class="text-gray-500 text-sm tracking-wide mb-8" aria-live="polite">
+          Loading events…
+        </div>
+
+        <div id="em-events-grid" class="space-y-12 sm:space-y-16"></div>
+      </div>
+    </main>
+
+    <div id="em-site-footer-root"></div>
+
+    <div id="em-drawer-backdrop" class="em-drawer-backdrop" aria-hidden="true"></div>
+    <aside id="em-drawer" class="em-drawer" role="dialog" aria-modal="true" aria-labelledby="em-drawer-title" aria-hidden="true">
+      <div class="flex items-center justify-between gap-3 px-5 py-4 border-b border-white/10 shrink-0">
+        <p class="text-[10px] font-black tracking-[0.3em] uppercase text-gold-500 em-accent-label">Event details</p>
+        <button type="button" id="em-drawer-close" class="p-2 -mr-1 text-white/60 hover:text-white transition-colors" aria-label="Close">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <div id="em-drawer-body" class="em-drawer-body"></div>
+    </aside>
+
+    <div id="em-lightbox" class="em-lightbox" role="dialog" aria-modal="true" aria-label="Image preview" aria-hidden="true">
+      <button type="button" id="em-lightbox-close" class="em-lightbox-close" aria-label="Close image">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+      <img id="em-lightbox-img" src="" alt="" />
+    </div>
+
+    <div id="em-join-modal" class="em-join-modal" role="dialog" aria-modal="true" aria-labelledby="em-join-title" aria-hidden="true">
+      <div class="em-join-modal-backdrop bg-brand-dark/98 backdrop-blur-3xl" id="em-join-backdrop"></div>
+      <div id="em-join-dialog" class="em-join-dialog glass border rounded-sm shadow-2xl border-white/10">
+        <button type="button" id="em-join-close" class="absolute top-8 right-8 sm:top-10 sm:right-10 text-gray-500 hover:text-white transition-colors" aria-label="Close">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
+        <div class="text-center mb-10 space-y-4 pr-8">
+          <span id="em-join-eyebrow" class="uppercase tracking-[0.8em] text-[10px] font-black italic text-gold-500">Event Intake</span>
+          <h2 id="em-join-title" class="text-4xl sm:text-5xl leading-tight uppercase tracking-tighter font-serif font-black italic">Join Event</h2>
+        </div>
+        <form id="em-join-form" class="space-y-8" novalidate>
+          <input type="hidden" id="em-join-event-id" name="event_id" value="" />
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="space-y-3">
+              <label for="em-join-name">Full Name</label>
+              <input id="em-join-name" name="full_name" type="text" autocomplete="name" required maxlength="191" placeholder="Full Name" class="em-join-input em-join-input-alpha" />
+            </div>
+            <div class="space-y-3">
+              <label for="em-join-phone">Phone Number</label>
+              <input id="em-join-phone" name="phone" type="tel" autocomplete="tel" required maxlength="50" placeholder="+1 555 000 0000" class="em-join-input em-join-input-alpha" />
+            </div>
+          </div>
+          <div class="space-y-3">
+            <label for="em-join-email">Email Address <span class="normal-case tracking-normal font-medium opacity-60">(optional)</span></label>
+            <input id="em-join-email" name="email" type="email" autocomplete="email" maxlength="191" placeholder="you@example.com" class="em-join-input em-join-input-alpha" />
+          </div>
+          <p id="em-join-status" class="text-xs min-h-[1.25rem] text-center" aria-live="polite"></p>
+          <button type="submit" id="em-join-submit" class="em-cta-btn w-full py-6 text-sm bg-gold-500 text-black hover:bg-white disabled:opacity-60">
+            Join
+          </button>
+          <button type="button" id="em-join-cancel" class="sr-only">Cancel</button>
+        </form>
+      </div>
+    </div>
+
+    <div id="em-bookme-modal" class="em-join-modal" role="dialog" aria-modal="true" aria-labelledby="em-bookme-title" aria-hidden="true">
+      <div class="em-join-modal-backdrop bg-brand-dark/98 backdrop-blur-3xl" id="em-bookme-backdrop"></div>
+      <div id="em-bookme-dialog" class="em-join-dialog glass border rounded-sm shadow-2xl border-white/10">
+        <button type="button" id="em-bookme-close" class="absolute top-8 right-8 sm:top-10 sm:right-10 text-gray-500 hover:text-white transition-colors" aria-label="Close">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
+        <div class="text-center mb-10 space-y-4 pr-8">
+          <span id="em-bookme-eyebrow" class="uppercase tracking-[0.8em] text-[10px] font-black italic text-gold-500">Hire Eddy</span>
+          <h2 id="em-bookme-title" class="text-4xl sm:text-5xl leading-tight uppercase tracking-tighter font-serif font-black italic">Book Me</h2>
+        </div>
+        <form id="em-bookme-form" class="space-y-8" novalidate>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="space-y-3">
+              <label for="em-bookme-name">Full Name</label>
+              <input id="em-bookme-name" name="full_name" type="text" autocomplete="name" required maxlength="191" placeholder="Full Name" class="em-join-input em-join-input-alpha" />
+            </div>
+            <div class="space-y-3">
+              <label for="em-bookme-phone">Phone Number</label>
+              <input id="em-bookme-phone" name="phone" type="tel" autocomplete="tel" required maxlength="50" placeholder="+1 555 000 0000" class="em-join-input em-join-input-alpha" />
+            </div>
+          </div>
+          <div class="space-y-3">
+            <label for="em-bookme-email">Email Address</label>
+            <input id="em-bookme-email" name="email" type="email" autocomplete="email" required maxlength="191" placeholder="you@example.com" class="em-join-input em-join-input-alpha" />
+          </div>
+          <div class="space-y-3">
+            <label for="em-bookme-address">Address</label>
+            <input id="em-bookme-address" name="address" type="text" autocomplete="street-address" required maxlength="512" placeholder="City, State / Full address" class="em-join-input em-join-input-alpha" />
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="space-y-3">
+              <label for="em-bookme-date">Date</label>
+              <input id="em-bookme-date" name="booking_date" type="text" readonly placeholder="Select date" class="em-join-input em-join-input-alpha" autocomplete="off" />
+            </div>
+            <div class="space-y-3">
+              <label for="em-bookme-time">Time</label>
+              <input id="em-bookme-time" name="booking_time" type="text" readonly placeholder="Select time" class="em-join-input em-join-input-alpha" autocomplete="off" />
+            </div>
+          </div>
+          <button type="submit" id="em-bookme-submit" class="em-cta-btn w-full py-6 text-sm bg-gold-500 text-black hover:bg-white disabled:opacity-60">
+            Submit
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      (function () {
+        var CONTENT_API = '../backend/content/get.php';
+        var EVENTS_API = '../backend/events/list.php?status=published&upcoming=1';
+        var BOOK_API = '../backend/events/book.php';
+        var BOOKME_API = '../backend/book_me/submit.php';
+        var statusEl = document.getElementById('em-events-status');
+        var gridEl = document.getElementById('em-events-grid');
+        var navRoot = document.getElementById('em-site-nav-root');
+        var mobileNavRoot = document.getElementById('em-site-mobile-nav-root');
+        var footerRoot = document.getElementById('em-site-footer-root');
+        var backdropEl = document.getElementById('em-drawer-backdrop');
+        var drawerEl = document.getElementById('em-drawer');
+        var drawerBodyEl = document.getElementById('em-drawer-body');
+        var closeBtn = document.getElementById('em-drawer-close');
+        var lightboxEl = document.getElementById('em-lightbox');
+        var lightboxImg = document.getElementById('em-lightbox-img');
+        var lightboxClose = document.getElementById('em-lightbox-close');
+        var joinModal = document.getElementById('em-join-modal');
+        var joinForm = document.getElementById('em-join-form');
+        var joinEventId = document.getElementById('em-join-event-id');
+        var joinTitle = document.getElementById('em-join-title');
+        var joinStatus = document.getElementById('em-join-status');
+        var joinSubmit = document.getElementById('em-join-submit');
+        var bookmeModal = document.getElementById('em-bookme-modal');
+        var bookmeForm = document.getElementById('em-bookme-form');
+        var bookmeSubmit = document.getElementById('em-bookme-submit');
+        var bookmeDateEl = document.getElementById('em-bookme-date');
+        var bookmeTimeEl = document.getElementById('em-bookme-time');
+        var bookmeDateFp = null;
+        var bookmeTimeFp = null;
+        var eventsById = {};
+        var siteContent = null;
+        var theme = null;
+        var joinBusy = false;
+        var bookmeBusy = false;
+
+        function themeTokens(tpl) {
+          switch (tpl) {
+            case 'beta':
+              return {
+                bg: 'bg-[#F8F8F8]',
+                text: 'text-[#111111]',
+                muted: 'text-[#666666]',
+                border: 'border-[#111111]/10',
+                heading: 'font-sans font-black uppercase tracking-tighter',
+                nav: 'bg-white/90 border-b border-black/5',
+                btn: 'bg-black text-white hover:bg-gray-800',
+                accentText: 'text-black',
+                logoLast: 'text-black',
+                titleGradient: '',
+                accentLabel: 'text-black',
+                cardMeta: 'text-[#444]',
+                footerBg: 'bg-gray-100',
+              };
+            case 'gamma':
+              return {
+                bg: 'bg-[#000814]',
+                text: 'text-white',
+                muted: 'text-gray-500',
+                border: 'border-brand-cyan/20',
+                heading: 'font-mono font-bold tracking-tight',
+                nav: 'bg-[#000814]/80 border-b border-brand-cyan/10',
+                btn: 'bg-brand-cyan text-black hover:bg-white',
+                accentText: 'text-brand-cyan',
+                logoLast: 'text-white',
+                titleGradient: 'cyan-gradient',
+                accentLabel: 'text-brand-cyan',
+                cardMeta: 'text-white/75',
+                footerBg: 'bg-brand-gray',
+              };
+            default:
+              return {
+                bg: 'bg-brand-dark',
+                text: 'text-white',
+                muted: 'text-gray-400',
+                border: 'border-white/5',
+                heading: 'font-serif font-black italic',
+                nav: 'glass border-b border-white/10',
+                btn: 'bg-gold-500 text-black hover:bg-white',
+                accentText: 'text-gold-500',
+                logoLast: 'text-gold-500',
+                titleGradient: 'gold-gradient',
+                accentLabel: 'text-gold-500',
+                cardMeta: 'text-white/75',
+                footerBg: 'bg-brand-gray',
+              };
+          }
+        }
+
+        function escapeHtml(str) {
+          return String(str == null ? '' : str)
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;');
+        }
+
+        function resolveHref(href) {
+          var h = String(href || '').trim();
+          if (!h || h === '#') return '../';
+          if (/^https?:\/\//i.test(h) || h.startsWith('mailto:') || h.startsWith('tel:')) return h;
+          if (h === 'events/' || h === './' || h === 'events' || h === '/events' || h === '/events/') return './';
+          if (h.startsWith('#')) return '../' + h;
+          if (h.startsWith('/')) return '..' + h;
+          if (h.startsWith('../')) return h;
+          return '../' + h.replace(/^\.\//, '');
+        }
+
+        function isEventsHref(href) {
+          var h = String(href || '').trim().toLowerCase();
+          return h === 'events/' || h === 'events' || h === './' || h === '/events' || h === '/events/';
+        }
+
+        function assetUrl(path) {
+          if (!path) return '';
+          if (/^https?:\/\//i.test(path) || path.startsWith('data:') || path.startsWith('/')) return path;
+          return '../' + path.replace(/^\.\//, '');
+        }
+
+        function formatDate(iso) {
+          if (!iso) return '—';
+          var parts = String(iso).slice(0, 10).split('-');
+          if (parts.length !== 3) return escapeHtml(iso);
+          var d = new Date(Number(parts[0]), Number(parts[1]) - 1, Number(parts[2]));
+          if (isNaN(d.getTime())) return escapeHtml(iso);
+          return d.toLocaleDateString('en-US', {
+            weekday: 'short',
+            month: 'short',
+            day: 'numeric',
+            year: 'numeric',
+          });
+        }
+
+        function todayIsoLocal() {
+          var now = new Date();
+          var y = now.getFullYear();
+          var m = String(now.getMonth() + 1).padStart(2, '0');
+          var d = String(now.getDate()).padStart(2, '0');
+          return y + '-' + m + '-' + d;
+        }
+
+        function isUpcomingEvent(ev) {
+          var dateStr = String(ev && ev.event_date ? ev.event_date : '').slice(0, 10);
+          if (!/^\d{4}-\d{2}-\d{2}$/.test(dateStr)) return false;
+          return dateStr >= todayIsoLocal();
+        }
+
+        function monthLabel(iso) {
+          var parts = String(iso || '').slice(0, 10).split('-');
+          if (parts.length < 2) return 'Upcoming';
+          var d = new Date(Number(parts[0]), Number(parts[1]) - 1, 1);
+          if (isNaN(d.getTime())) return 'Upcoming';
+          return d.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+        }
+
+        function groupEventsByMonth(events) {
+          var groups = [];
+          var map = {};
+          (events || []).forEach(function (ev) {
+            var key = String(ev.event_date || '').slice(0, 7);
+            if (!/^\d{4}-\d{2}$/.test(key)) key = 'unknown';
+            if (!map[key]) {
+              map[key] = {
+                key: key,
+                label: key === 'unknown' ? 'Upcoming' : monthLabel(ev.event_date),
+                events: [],
+              };
+              groups.push(map[key]);
+            }
+            map[key].events.push(ev);
+          });
+          return groups;
+        }
+
+        function renderEvents(events) {
+          var upcoming = (events || []).filter(isUpcomingEvent).slice().sort(function (a, b) {
+            var da = String(a.event_date || '');
+            var db = String(b.event_date || '');
+            if (da !== db) return da < db ? -1 : 1;
+            var sa = String(a.start_time || '');
+            var sb = String(b.start_time || '');
+            if (sa !== sb) return sa < sb ? -1 : 1;
+            return (a.id || 0) - (b.id || 0);
+          });
+
+          eventsById = {};
+          upcoming.forEach(function (ev) {
+            eventsById[String(ev.id)] = ev;
+          });
+
+          if (!upcoming.length) {
+            statusEl.textContent = 'No upcoming events right now. Check back soon.';
+            statusEl.className = 'text-sm tracking-wide mb-8 ' + (theme ? theme.muted : 'text-gray-500');
+            gridEl.innerHTML = '';
+            return;
+          }
+
+          statusEl.textContent = '';
+          var accent = (theme && theme.accentLabel) || 'text-gold-500';
+          var groups = groupEventsByMonth(upcoming);
+          gridEl.innerHTML = groups
+            .map(function (group) {
+              return (
+                '<section class="em-month-group" aria-label="' +
+                escapeHtml(group.label) +
+                '">' +
+                '<h2 class="em-month-heading ' +
+                accent +
+                '">' +
+                escapeHtml(group.label) +
+                '</h2>' +
+                '<div class="flex flex-wrap gap-5 sm:gap-6">' +
+                group.events.map(cardHtml).join('') +
+                '</div>' +
+                '</section>'
+              );
+            })
+            .join('');
+        }
+
+        function formatTime(t) {
+          if (!t) return '—';
+          var m = String(t).match(/^(\d{1,2}):(\d{2})/);
+          if (!m) return escapeHtml(t);
+          var h = parseInt(m[1], 10);
+          var min = m[2];
+          var ampm = h >= 12 ? 'PM' : 'AM';
+          h = h % 12;
+          if (h === 0) h = 12;
+          return h + ':' + min + ' ' + ampm;
+        }
+
+        function formatPrice(price) {
+          if (price === null || price === undefined || price === '') return 'Free';
+          var n = Number(price);
+          if (isNaN(n)) return escapeHtml(String(price));
+          if (n === 0) return 'Free';
+          return '$' + n.toLocaleString('en-US', { maximumFractionDigits: 2 });
+        }
+
+        function locationLabel(ev) {
+          return String(ev.type || '').toLowerCase() === 'online'
+            ? 'Virtual Event'
+            : escapeHtml(ev.location || 'Location TBA');
+        }
+
+        var ICONS = {
+          calendar:
+            '<svg class="em-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>',
+          mapPin:
+            '<svg class="em-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6-5.2-6-10a6 6 0 1 1 12 0c0 4.8-6 10-6 10z"/><circle cx="12" cy="11" r="2.2"/></svg>',
+          clock:
+            '<svg class="em-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>',
+          tag:
+            '<svg class="em-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.6 13.4 12.7 5.5a2 2 0 0 0-1.4-.6H5a2 2 0 0 0-2 2v6.3a2 2 0 0 0 .6 1.4l7.9 7.9a2 2 0 0 0 2.8 0l6.3-6.3a2 2 0 0 0 0-2.8z"/><circle cx="7.5" cy="7.5" r="1.2"/></svg>',
+          link:
+            '<svg class="em-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.07 0l2.12-2.12a5 5 0 0 0-7.07-7.07L10.7 5.24"/><path d="M14 11a5 5 0 0 0-7.07 0L4.8 13.12a5 5 0 0 0 7.07 7.07L13.3 18.76"/></svg>',
+          join:
+            '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" x2="19" y1="8" y2="14"/><line x1="22" x2="16" y1="11" y2="11"/></svg>',
+        };
+
+        var SOCIAL_ICONS = {
+          linkedin:
+            '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>',
+          instagram:
+            '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>',
+          youtube:
+            '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg>',
+        };
+
+        function metaRow(icon, label, value) {
+          var metaClass = (theme && theme.cardMeta) || 'text-white/75';
+          return (
+            '<div class="flex items-start gap-2.5">' +
+              '<span class="mt-0.5" title="' + label + '">' + icon + '</span>' +
+              '<span class="' + metaClass + ' leading-snug">' + value + '</span>' +
+            '</div>'
+          );
+        }
+
+        function logoHtml(extraClass) {
+          var nav = (siteContent && siteContent.navigation) || {};
+          var tpl = (siteContent && siteContent.activeTemplate) || 'alpha';
+          var first = escapeHtml(nav.logoFirst || 'EDDY');
+          var last = escapeHtml(nav.logoLast || 'MACON');
+          var wrap =
+            'em-site-logo ' +
+            (extraClass || '') +
+            (tpl === 'gamma' ? ' text-brand-cyan' : '');
+          var lastClass =
+            tpl === 'alpha' ? 'text-gold-500' : tpl === 'gamma' ? 'text-white' : 'text-black';
+          return (
+            '<a href="../" class="text-xl sm:text-2xl lg:text-3xl font-serif font-black tracking-tighter truncate ' +
+            wrap +
+            '">' +
+            first +
+            ' <span class="' +
+            lastClass +
+            '">' +
+            last +
+            '</span></a>'
+          );
+        }
+
+        function ctaBtn(label, extraClass) {
+          return (
+            '<a href="../#contact" class="em-cta-btn inline-flex items-center justify-center ' +
+            (theme ? theme.btn : 'bg-gold-500 text-black hover:bg-white') +
+            ' ' +
+            (extraClass || '') +
+            '">' +
+            escapeHtml(label || 'INITIATE') +
+            '</a>'
+          );
+        }
+
+        function renderNav() {
+          var nav = (siteContent && siteContent.navigation) || {};
+          var links = Array.isArray(nav.links) ? nav.links : [];
+          var muted = theme.muted;
+          var desktopLinks = links
+            .map(function (link) {
+              var href = resolveHref(link.href);
+              var active = isEventsHref(link.href);
+              var cls = active
+                ? 'text-[10px] font-black tracking-[0.3em] xl:tracking-[0.4em] uppercase ' + theme.accentText
+                : 'text-[10px] font-black tracking-[0.3em] xl:tracking-[0.4em] uppercase transition-all hover:opacity-100 ' + muted;
+              return (
+                '<a href="' +
+                escapeHtml(href) +
+                '" class="' +
+                cls +
+                '">' +
+                escapeHtml(link.label || '') +
+                '</a>'
+              );
+            })
+            .join('');
+
+          navRoot.innerHTML =
+            '<nav class="em-site-nav fixed top-0 left-0 right-0 z-[160] py-4 sm:py-6 lg:py-8 transition-all duration-700 ' +
+            theme.nav +
+            '">' +
+            '<div class="max-w-[1700px] mx-auto px-4 sm:px-8 lg:px-20 flex justify-between items-center gap-3">' +
+            logoHtml() +
+            '<div class="hidden lg:flex items-center gap-8 xl:space-x-12 xl:gap-0">' +
+            desktopLinks +
+            '<div class="flex items-center gap-3 ml-4">' +
+            ctaBtn(nav.cta) +
+            '</div></div>' +
+            '<div class="flex lg:hidden items-center gap-2 shrink-0">' +
+            ctaBtn(nav.cta, '!px-3 !py-2 text-[9px]') +
+            '<button type="button" id="em-mobile-open" class="p-2 -mr-1" aria-label="Open menu">' +
+            '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="' +
+            (theme.accentText || 'text-gold-500') +
+            '"><path d="M4 6h16M4 12h16M4 18h16"/></svg>' +
+            '</button></div></div></nav>';
+
+          var mobileLinks = links
+            .map(function (link) {
+              var href = resolveHref(link.href);
+              var active = isEventsHref(link.href);
+              return (
+                '<a href="' +
+                escapeHtml(href) +
+                '" class="em-mobile-link block py-4 text-[12px] font-black tracking-[0.3em] uppercase border-b ' +
+                theme.border +
+                ' ' +
+                (active ? theme.accentText : muted) +
+                '">' +
+                escapeHtml(link.label || '') +
+                '</a>'
+              );
+            })
+            .join('');
+
+          mobileNavRoot.innerHTML =
+            '<div id="em-mobile-nav" class="em-site-mobile-nav fixed inset-0 z-[170] lg:hidden hidden">' +
+            '<div class="absolute inset-0 bg-brand-dark/95 backdrop-blur-xl" data-close-mobile></div>' +
+            '<div class="relative h-full w-full max-w-sm ml-auto flex flex-col border-l ' +
+            theme.border +
+            ' bg-brand-accent/95 p-6 sm:p-8 animate-reveal-up ' +
+            theme.text +
+            '">' +
+            '<div class="flex items-center justify-between gap-3 mb-10">' +
+            logoHtml('text-xl') +
+            '<button type="button" class="p-2 ' +
+            muted +
+            '" data-close-mobile aria-label="Close menu">' +
+            '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>' +
+            '</button></div>' +
+            '<nav class="flex flex-col gap-1 flex-1">' +
+            mobileLinks +
+            '</nav>' +
+            '<div class="pt-6">' +
+            ctaBtn(nav.cta, 'w-full') +
+            '</div></div></div>';
+
+          var openBtn = document.getElementById('em-mobile-open');
+          var mobileNav = document.getElementById('em-mobile-nav');
+          function closeMobile() {
+            if (mobileNav) mobileNav.classList.add('hidden');
+          }
+          function openMobile() {
+            if (mobileNav) mobileNav.classList.remove('hidden');
+          }
+          if (openBtn) openBtn.addEventListener('click', openMobile);
+          if (mobileNav) {
+            mobileNav.querySelectorAll('[data-close-mobile]').forEach(function (el) {
+              el.addEventListener('click', closeMobile);
+            });
+            mobileNav.querySelectorAll('.em-mobile-link').forEach(function (el) {
+              el.addEventListener('click', closeMobile);
+            });
+          }
+        }
+
+        function renderFooter() {
+          var nav = (siteContent && siteContent.navigation) || {};
+          var contact = (siteContent && siteContent.contact) || {};
+          var socials = (siteContent && siteContent.socials) || {};
+          var tpl = (siteContent && siteContent.activeTemplate) || 'alpha';
+          var links = Array.isArray(nav.links) ? nav.links : [];
+          var first = escapeHtml(nav.logoFirst || 'EDDY');
+          var last = escapeHtml(nav.logoLast || 'MACON');
+          var logoWrap = 'em-site-logo' + (tpl === 'gamma' ? ' text-brand-cyan' : '');
+          var lastClass =
+            tpl === 'alpha' ? 'text-gold-500' : tpl === 'gamma' ? 'text-white' : 'text-black';
+
+          var protocolLinks = links
+            .map(function (link) {
+              return (
+                '<li><a href="' +
+                escapeHtml(resolveHref(link.href)) +
+                '" class="hover:text-gold-500 transition-all block">' +
+                escapeHtml(link.label || '') +
+                '</a></li>'
+              );
+            })
+            .join('');
+
+          var socialHtml = '';
+          ['linkedin', 'instagram', 'youtube'].forEach(function (key) {
+            var href = socials[key] || '#';
+            socialHtml +=
+              '<a href="' +
+              escapeHtml(href) +
+              '" class="hover:text-gold-500 transition-colors" target="_blank" rel="noopener noreferrer">' +
+              SOCIAL_ICONS[key] +
+              '</a>';
+          });
+
+          footerRoot.innerHTML =
+            '<footer class="py-32 sm:py-60 px-6 sm:px-24 border-t ' +
+            theme.border +
+            ' ' +
+            theme.footerBg +
+            '">' +
+            '<div class="max-w-[1700px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-20">' +
+            '<div class="lg:col-span-5 space-y-12">' +
+            '<a href="../" class="text-4xl font-serif font-black tracking-tighter italic ' +
+            logoWrap +
+            '">' +
+            first +
+            ' <span class="' +
+            lastClass +
+            '">' +
+            last +
+            '</span></a>' +
+            '<p class="text-lg sm:text-2xl font-light leading-relaxed italic max-w-md ' +
+            theme.muted +
+            '">' +
+            escapeHtml(contact.footerBio || '') +
+            '</p>' +
+            '<div class="flex space-x-10 text-gray-700">' +
+            socialHtml +
+            '</div></div>' +
+            '<div class="lg:col-span-3 space-y-10">' +
+            '<h5 class="text-[11px] font-black uppercase tracking-[0.4em] border-b pb-8">PROTOCOLS</h5>' +
+            '<ul class="space-y-6 text-[10px] font-black uppercase tracking-[0.4em] ' +
+            theme.muted +
+            '">' +
+            protocolLinks +
+            '</ul></div>' +
+            '<div class="lg:col-span-4 space-y-10">' +
+            '<h5 class="text-[11px] font-black uppercase tracking-[0.4em] border-b pb-8">CHANNELS</h5>' +
+            '<p class="text-xl font-black italic underline decoration-gold-500 underline-offset-[16px] ' +
+            theme.text +
+            '">' +
+            escapeHtml(contact.email || '') +
+            '</p>' +
+            '<div class="pt-10 opacity-40 text-[9px] font-black uppercase tracking-[0.4em] space-y-2">' +
+            '<p>' +
+            escapeHtml(contact.legalNote || '') +
+            '</p>' +
+            '<p>PROTOCOL ENGINE: ' +
+            escapeHtml(String(tpl).toUpperCase()) +
+            '</p></div></div></div></footer>';
+        }
+
+        function applyTheme(tpl) {
+          theme = themeTokens(tpl);
+          document.body.className =
+            'font-sans ' +
+            theme.bg +
+            ' ' +
+            theme.text +
+            (tpl === 'beta' ? ' theme-beta' : tpl === 'gamma' ? ' theme-gamma' : '');
+
+          var badge = document.getElementById('em-events-badge');
+          var title = document.getElementById('em-events-title');
+          var lead = document.getElementById('em-events-lead');
+          if (badge) badge.className = 'text-[10px] sm:text-xs font-black tracking-[0.35em] uppercase mb-4 ' + theme.accentText;
+          if (title) {
+            title.className =
+              'text-4xl sm:text-5xl lg:text-6xl tracking-tight mb-4 ' + theme.heading;
+            title.innerHTML = theme.titleGradient
+              ? '<span class="' + theme.titleGradient + '">Events</span>'
+              : 'Events';
+          }
+          if (lead) lead.className = 'text-sm sm:text-base leading-relaxed max-w-xl ' + theme.muted;
+          document.querySelectorAll('.em-accent-label').forEach(function (el) {
+            el.className = el.className.replace(/text-(gold-500|brand-cyan|black)/g, '').trim() + ' ' + theme.accentLabel;
+          });
+
+          var hireBadge = document.getElementById('em-hire-badge');
+          var hireTitle = document.getElementById('em-hire-title');
+          var hireLead = document.getElementById('em-hire-lead');
+          var hireBtn = document.getElementById('em-bookme-open');
+          var hireSec = document.getElementById('em-hire');
+          if (hireBadge) hireBadge.className = 'text-[10px] sm:text-xs font-black tracking-[0.35em] uppercase mb-4 ' + theme.accentText;
+          if (hireTitle) {
+            hireTitle.className =
+              'text-3xl sm:text-4xl lg:text-5xl tracking-tight mb-4 ' + theme.heading;
+          }
+          if (hireLead) hireLead.className = 'text-sm sm:text-base leading-relaxed max-w-xl mb-8 ' + theme.muted;
+          if (hireBtn) {
+            hireBtn.className =
+              'em-cta-btn inline-flex items-center justify-center px-10 py-5 text-sm ' + theme.btn;
+          }
+          if (hireSec) {
+            hireSec.className =
+              'mb-16 sm:mb-20 pb-12 sm:pb-16 border-b max-w-3xl ' +
+              (tpl === 'beta' ? 'border-black/10' : tpl === 'gamma' ? 'border-brand-cyan/20' : 'border-white/10');
+          }
+
+          var joinDialog = document.getElementById('em-join-dialog');
+          var joinEyebrow = document.getElementById('em-join-eyebrow');
+          var joinTitleEl = document.getElementById('em-join-title');
+          var joinSubmitBtn = document.getElementById('em-join-submit');
+          var bookmeDialog = document.getElementById('em-bookme-dialog');
+          var bookmeEyebrow = document.getElementById('em-bookme-eyebrow');
+          var bookmeTitleEl = document.getElementById('em-bookme-title');
+          var bookmeSubmitBtn = document.getElementById('em-bookme-submit');
+          var inputCls =
+            tpl === 'beta' ? 'em-join-input-beta' : tpl === 'gamma' ? 'em-join-input-gamma' : 'em-join-input-alpha';
+          if (joinDialog) {
+            joinDialog.className =
+              'em-join-dialog glass border rounded-sm shadow-2xl ' + theme.border;
+          }
+          if (bookmeDialog) {
+            bookmeDialog.className =
+              'em-join-dialog glass border rounded-sm shadow-2xl ' + theme.border;
+          }
+          if (joinEyebrow) {
+            joinEyebrow.className =
+              'uppercase tracking-[0.8em] text-[10px] font-black italic ' + theme.accentText;
+          }
+          if (bookmeEyebrow) {
+            bookmeEyebrow.className =
+              'uppercase tracking-[0.8em] text-[10px] font-black italic ' + theme.accentText;
+          }
+          if (joinTitleEl) {
+            joinTitleEl.className =
+              'text-4xl sm:text-5xl leading-tight uppercase tracking-tighter ' + theme.heading;
+          }
+          if (bookmeTitleEl) {
+            bookmeTitleEl.className =
+              'text-4xl sm:text-5xl leading-tight uppercase tracking-tighter ' + theme.heading;
+          }
+          document.querySelectorAll('.em-join-input').forEach(function (inp) {
+            if (inp.classList.contains('flatpickr-input') && inp._flatpickr && inp._flatpickr.altInput) {
+              return;
+            }
+            inp.className = 'em-join-input ' + inputCls;
+          });
+          if (bookmeDateFp && bookmeDateFp.altInput) {
+            bookmeDateFp.altInput.className = 'em-join-input ' + inputCls;
+          }
+          if (bookmeTimeFp && bookmeTimeFp.altInput) {
+            bookmeTimeFp.altInput.className = 'em-join-input ' + inputCls;
+          }
+          if (joinSubmitBtn) {
+            joinSubmitBtn.className =
+              'em-cta-btn w-full py-6 text-sm disabled:opacity-60 ' + theme.btn;
+          }
+          if (bookmeSubmitBtn) {
+            bookmeSubmitBtn.className =
+              'em-cta-btn w-full py-6 text-sm disabled:opacity-60 ' + theme.btn;
+          }
+        }
+
+        function joinBtnHtml(ev, extraClass) {
+          return (
+            '<button type="button" class="em-join-btn em-join-open ' +
+            (extraClass || '') +
+            '" data-join-id="' +
+            escapeHtml(String(ev.id)) +
+            '" aria-label="Join ' +
+            escapeHtml(ev.title || 'event') +
+            '">' +
+            ICONS.join +
+            '<span>Join</span></button>'
+          );
+        }
+
+        function cardHtml(ev) {
+          var cover = assetUrl(ev.cover_image);
+          var title = escapeHtml(ev.title || 'Untitled event');
+          var location = locationLabel(ev);
+          var date = formatDate(ev.event_date);
+          var start = formatTime(ev.start_time);
+          var end = formatTime(ev.end_time);
+          var coverBlock = cover
+            ? '<img src="' + escapeHtml(cover) + '" alt="" class="absolute inset-0 w-full h-full object-cover" loading="lazy" />'
+            : '<div class="absolute inset-0 flex items-center justify-center"><span class="text-[9px] font-black tracking-[0.3em] uppercase opacity-40">No cover</span></div>';
+          var titleClass = theme && theme.heading ? theme.heading.replace('italic', '') : 'font-serif font-bold';
+
+          return (
+            '<article class="em-event-card overflow-hidden flex flex-col w-full" role="button" tabindex="0" data-event-id="' +
+              escapeHtml(String(ev.id)) +
+              '" aria-label="View details for ' +
+              title +
+              '">' +
+              '<div class="em-cover relative aspect-[16/10] overflow-hidden">' +
+                coverBlock +
+                '<div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>' +
+              '</div>' +
+              '<div class="p-4 flex flex-col gap-3 flex-1">' +
+                '<div class="flex items-start justify-between gap-2">' +
+                  '<h2 class="' + titleClass + ' text-lg leading-snug tracking-tight">' + title + '</h2>' +
+                  joinBtnHtml(ev, 'shrink-0') +
+                '</div>' +
+                '<div class="space-y-2 text-xs mt-auto">' +
+                  metaRow(ICONS.calendar, 'Date', date) +
+                  metaRow(ICONS.clock, 'Time', start + ' – ' + end) +
+                  metaRow(ICONS.mapPin, 'Location', location) +
+                '</div>' +
+              '</div>' +
+            '</article>'
+          );
+        }
+
+        function mediaHtml(ev) {
+          var media = Array.isArray(ev.media) ? ev.media : [];
+          if (!media.length) return '';
+          var items = media
+            .map(function (m) {
+              var url = assetUrl(m.media_url);
+              if (!url) return '';
+              if (String(m.type || '').toLowerCase() === 'video') {
+                return (
+                  '<div class="em-masonry-item">' +
+                    '<video src="' + escapeHtml(url) + '" controls playsinline preload="metadata"></video>' +
+                  '</div>'
+                );
+              }
+              return (
+                '<button type="button" class="em-masonry-item em-gallery-zoom" data-full-src="' +
+                escapeHtml(url) +
+                '" aria-label="View larger image">' +
+                  '<img src="' + escapeHtml(url) + '" alt="" loading="lazy" />' +
+                '</button>'
+              );
+            })
+            .filter(Boolean)
+            .join('');
+          if (!items) return '';
+          return (
+            '<section class="mt-6">' +
+              '<p class="text-[10px] font-black tracking-[0.25em] uppercase mb-3 em-accent-label ' +
+              ((theme && theme.accentLabel) || 'text-gold-500') +
+              '">Gallery</p>' +
+              '<div class="em-masonry">' + items + '</div>' +
+            '</section>'
+          );
+        }
+
+        function drawerHtml(ev) {
+          var cover = assetUrl(ev.cover_image);
+          var title = escapeHtml(ev.title || 'Untitled event');
+          var isOnline = String(ev.type || '').toLowerCase() === 'online';
+          var typeLabel = isOnline ? 'Online' : 'In person';
+          var location = locationLabel(ev);
+          var date = formatDate(ev.event_date);
+          var start = formatTime(ev.start_time);
+          var end = formatTime(ev.end_time);
+          var price = formatPrice(ev.price);
+          var desc = (ev.description || '').trim();
+          var accent = (theme && theme.accentLabel) || 'text-gold-500';
+
+          var coverBlock = cover
+            ? '<img src="' + escapeHtml(cover) + '" alt="" class="w-full h-full object-cover" />'
+            : '<div class="w-full h-full flex items-center justify-center text-[10px] font-black tracking-[0.3em] uppercase opacity-40">No cover</div>';
+
+          var descBlock = desc
+            ? '<section class="mt-6">' +
+                '<p class="text-[10px] font-black tracking-[0.25em] uppercase mb-3 ' + accent + '">About</p>' +
+                '<div class="em-event-description text-white/75 leading-relaxed">' + desc + '</div>' +
+              '</section>'
+            : '';
+
+          return (
+            '<div class="em-cover relative aspect-[16/10] bg-brand-gray">' + coverBlock + '</div>' +
+            '<div class="px-5 py-5">' +
+              '<div class="flex flex-wrap items-center gap-2 mb-3">' +
+                '<span class="text-[9px] font-black tracking-[0.2em] uppercase px-2 py-1 rounded-full border border-white/20 ' + accent + '">' + typeLabel + '</span>' +
+                '<span class="text-[9px] font-black tracking-[0.2em] uppercase px-2 py-1 rounded-full border border-white/15 text-white/60">' + price + '</span>' +
+              '</div>' +
+              '<h2 id="em-drawer-title" class="font-serif text-2xl font-bold leading-snug tracking-tight mb-4">' + title + '</h2>' +
+              '<div class="mb-4">' + joinBtnHtml(ev) + '</div>' +
+              '<div class="space-y-2.5 text-sm">' +
+                metaRow(ICONS.calendar, 'Date', date) +
+                metaRow(ICONS.clock, 'Time', start + ' – ' + end) +
+                metaRow(ICONS.mapPin, 'Location', location) +
+                metaRow(ICONS.tag, 'Price', price) +
+              '</div>' +
+              descBlock +
+              mediaHtml(ev) +
+            '</div>'
+          );
+        }
+
+        function openJoinModal(ev) {
+          if (!ev) return;
+          // Close detail drawer so page content can show through the frosted backdrop
+          if (drawerEl.classList.contains('is-open')) {
+            closeDrawer();
+          }
+          joinEventId.value = String(ev.id);
+          joinTitle.textContent = ev.title || 'Join Event';
+          joinStatus.textContent = '';
+          joinStatus.className = 'text-xs min-h-[1.25rem] text-center';
+          joinForm.reset();
+          joinEventId.value = String(ev.id);
+          if (theme && siteContent) {
+            applyTheme(siteContent.activeTemplate || 'alpha');
+          }
+          joinModal.classList.remove('is-open');
+          void joinModal.offsetWidth;
+          joinModal.classList.add('is-open');
+          joinModal.setAttribute('aria-hidden', 'false');
+          document.body.classList.add('em-drawer-open');
+          setTimeout(function () {
+            var nameEl = document.getElementById('em-join-name');
+            if (nameEl) nameEl.focus();
+          }, 50);
+        }
+
+        function closeJoinModal() {
+          if (joinBusy) return;
+          joinModal.classList.remove('is-open');
+          joinModal.setAttribute('aria-hidden', 'true');
+          if (!drawerEl.classList.contains('is-open') && !bookmeModal.classList.contains('is-open')) {
+            document.body.classList.remove('em-drawer-open');
+          }
+        }
+
+        function initBookmeFlatpickr() {
+          if (typeof window.flatpickr !== 'function') return;
+          var inputCls =
+            theme && siteContent && siteContent.activeTemplate === 'beta'
+              ? 'em-join-input-beta'
+              : theme && siteContent && siteContent.activeTemplate === 'gamma'
+                ? 'em-join-input-gamma'
+                : 'em-join-input-alpha';
+
+          if (bookmeDateEl && !bookmeDateEl._flatpickr) {
+            bookmeDateFp = window.flatpickr(bookmeDateEl, {
+              dateFormat: 'Y-m-d',
+              altInput: true,
+              altFormat: 'F j, Y',
+              altInputClass: 'em-join-input ' + inputCls,
+              minDate: 'today',
+              allowInput: false,
+              disableMobile: true,
+              appendTo: document.body,
+            });
+          }
+          if (bookmeTimeEl && !bookmeTimeEl._flatpickr) {
+            bookmeTimeFp = window.flatpickr(bookmeTimeEl, {
+              enableTime: true,
+              noCalendar: true,
+              dateFormat: 'H:i',
+              altInput: true,
+              altFormat: 'h:i K',
+              altInputClass: 'em-join-input ' + inputCls,
+              time_24hr: false,
+              allowInput: false,
+              disableMobile: true,
+              appendTo: document.body,
+            });
+          }
+        }
+
+        function clearBookmeFlatpickr() {
+          if (bookmeDateFp) bookmeDateFp.clear();
+          else if (bookmeDateEl) bookmeDateEl.value = '';
+          if (bookmeTimeFp) bookmeTimeFp.clear();
+          else if (bookmeTimeEl) bookmeTimeEl.value = '';
+        }
+
+        function openBookmeModal() {
+          if (drawerEl.classList.contains('is-open')) {
+            closeDrawer();
+          }
+          if (joinModal.classList.contains('is-open')) {
+            closeJoinModal();
+          }
+          bookmeForm.reset();
+          clearBookmeFlatpickr();
+          if (theme && siteContent) {
+            applyTheme(siteContent.activeTemplate || 'alpha');
+          }
+          initBookmeFlatpickr();
+          bookmeModal.classList.remove('is-open');
+          void bookmeModal.offsetWidth;
+          bookmeModal.classList.add('is-open');
+          bookmeModal.setAttribute('aria-hidden', 'false');
+          document.body.classList.add('em-drawer-open');
+          setTimeout(function () {
+            var nameEl = document.getElementById('em-bookme-name');
+            if (nameEl) nameEl.focus();
+          }, 50);
+        }
+
+        function closeBookmeModal() {
+          if (bookmeBusy) return;
+          bookmeModal.classList.remove('is-open');
+          bookmeModal.setAttribute('aria-hidden', 'true');
+          if (!drawerEl.classList.contains('is-open') && !joinModal.classList.contains('is-open')) {
+            document.body.classList.remove('em-drawer-open');
+          }
+        }
+
+        function openLightbox(src) {
+          if (!src) return;
+          lightboxImg.src = src;
+          lightboxEl.classList.add('is-open');
+          lightboxEl.setAttribute('aria-hidden', 'false');
+          lightboxClose.focus();
+        }
+
+        function closeLightbox() {
+          lightboxEl.classList.remove('is-open');
+          lightboxEl.setAttribute('aria-hidden', 'true');
+          lightboxImg.removeAttribute('src');
+        }
+
+        function openDrawer(ev) {
+          closeLightbox();
+          drawerBodyEl.innerHTML = drawerHtml(ev);
+          drawerEl.classList.add('is-open');
+          backdropEl.classList.add('is-open');
+          drawerEl.setAttribute('aria-hidden', 'false');
+          backdropEl.setAttribute('aria-hidden', 'false');
+          document.body.classList.add('em-drawer-open');
+          closeBtn.focus();
+        }
+
+        function closeDrawer() {
+          closeLightbox();
+          drawerEl.classList.remove('is-open');
+          backdropEl.classList.remove('is-open');
+          drawerEl.setAttribute('aria-hidden', 'true');
+          backdropEl.setAttribute('aria-hidden', 'true');
+          document.body.classList.remove('em-drawer-open');
+        }
+
+        function openById(id) {
+          var ev = eventsById[String(id)];
+          if (ev) openDrawer(ev);
+        }
+
+        closeBtn.addEventListener('click', closeDrawer);
+        backdropEl.addEventListener('click', closeDrawer);
+        lightboxClose.addEventListener('click', function (e) {
+          e.stopPropagation();
+          closeLightbox();
+        });
+        lightboxEl.addEventListener('click', function (e) {
+          if (e.target === lightboxEl) closeLightbox();
+        });
+        drawerBodyEl.addEventListener('click', function (e) {
+          var joinBtn = e.target.closest('.em-join-open');
+          if (joinBtn) {
+            e.preventDefault();
+            e.stopPropagation();
+            openByJoinId(joinBtn.getAttribute('data-join-id'));
+            return;
+          }
+          var btn = e.target.closest('.em-gallery-zoom');
+          if (!btn) return;
+          e.preventDefault();
+          openLightbox(btn.getAttribute('data-full-src'));
+        });
+
+        function openByJoinId(id) {
+          var ev = eventsById[String(id)];
+          if (ev) openJoinModal(ev);
+        }
+
+        document.getElementById('em-join-close').addEventListener('click', closeJoinModal);
+        document.getElementById('em-join-cancel').addEventListener('click', closeJoinModal);
+        document.getElementById('em-join-backdrop').addEventListener('click', closeJoinModal);
+        document.getElementById('em-join-dialog').addEventListener('click', function (e) {
+          e.stopPropagation();
+        });
+
+        document.getElementById('em-bookme-open').addEventListener('click', openBookmeModal);
+        document.getElementById('em-bookme-close').addEventListener('click', closeBookmeModal);
+        document.getElementById('em-bookme-backdrop').addEventListener('click', closeBookmeModal);
+        document.getElementById('em-bookme-dialog').addEventListener('click', function (e) {
+          e.stopPropagation();
+        });
+
+        bookmeForm.addEventListener('submit', function (e) {
+          e.preventDefault();
+          if (bookmeBusy) return;
+
+          var name = String(document.getElementById('em-bookme-name').value || '').trim();
+          var phone = String(document.getElementById('em-bookme-phone').value || '').trim();
+          var email = String(document.getElementById('em-bookme-email').value || '').trim();
+          var address = String(document.getElementById('em-bookme-address').value || '').trim();
+          var bookingDate = String(document.getElementById('em-bookme-date').value || '').trim();
+          var bookingTime = String(document.getElementById('em-bookme-time').value || '').trim();
+
+          if (!name || !phone || !email || !address || !bookingDate || !bookingTime) {
+            if (window.toastr) toastr.error('All fields are required.', 'Error');
+            return;
+          }
+
+          bookmeBusy = true;
+          bookmeSubmit.disabled = true;
+          bookmeSubmit.textContent = 'Submitting…';
+
+          fetch(BOOKME_API, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              full_name: name,
+              phone: phone,
+              email: email,
+              address: address,
+              booking_date: bookingDate,
+              booking_time: bookingTime,
+            }),
+          })
+            .then(function (r) { return r.json(); })
+            .then(function (data) {
+              if (!data || !data.ok) {
+                throw new Error((data && data.error) || 'Could not submit');
+              }
+              if (window.toastr) toastr.success('Request received. We will be in touch.', 'Success');
+              bookmeForm.reset();
+              bookmeBusy = false;
+              bookmeSubmit.disabled = false;
+              bookmeSubmit.textContent = 'Submit';
+              closeBookmeModal();
+            })
+            .catch(function (err) {
+              var msg = (err && err.message) || 'Could not submit. Please try again.';
+              if (window.toastr) toastr.error(msg, 'Error');
+              bookmeBusy = false;
+              bookmeSubmit.disabled = false;
+              bookmeSubmit.textContent = 'Submit';
+            });
+        });
+
+        joinForm.addEventListener('submit', function (e) {
+          e.preventDefault();
+          if (joinBusy) return;
+
+          var name = String(document.getElementById('em-join-name').value || '').trim();
+          var phone = String(document.getElementById('em-join-phone').value || '').trim();
+          var email = String(document.getElementById('em-join-email').value || '').trim();
+          var eventId = parseInt(joinEventId.value, 10) || 0;
+
+          joinStatus.textContent = '';
+          joinStatus.className = 'text-xs min-h-[1.25rem] text-center';
+
+          if (!eventId) {
+            if (window.toastr) toastr.error('Missing event. Please try again.', 'Error');
+            else joinStatus.textContent = 'Missing event. Please try again.';
+            return;
+          }
+          if (!name || !phone) {
+            if (window.toastr) toastr.error('Full name and phone number are required.', 'Error');
+            else joinStatus.textContent = 'Full name and phone number are required.';
+            return;
+          }
+
+          joinBusy = true;
+          joinSubmit.disabled = true;
+          joinSubmit.textContent = 'Joining…';
+
+          fetch(BOOK_API, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              event_id: eventId,
+              full_name: name,
+              phone: phone,
+              email: email,
+            }),
+          })
+            .then(function (r) { return r.json(); })
+            .then(function (data) {
+              if (!data || !data.ok) {
+                throw new Error((data && data.error) || 'Could not submit');
+              }
+              if (window.toastr) toastr.success('You are registered. We will be in touch.', 'Success');
+              joinForm.reset();
+              joinEventId.value = String(eventId);
+              joinBusy = false;
+              joinSubmit.disabled = false;
+              joinSubmit.textContent = 'Join';
+              closeJoinModal();
+            })
+            .catch(function (err) {
+              var msg = (err && err.message) || 'Could not submit. Please try again.';
+              if (window.toastr) toastr.error(msg, 'Error');
+              else {
+                joinStatus.textContent = msg;
+                joinStatus.className = 'text-xs min-h-[1.25rem] text-center text-red-400';
+              }
+              joinBusy = false;
+              joinSubmit.disabled = false;
+              joinSubmit.textContent = 'Join';
+            });
+        });
+
+        document.addEventListener('keydown', function (e) {
+          if (e.key !== 'Escape') return;
+          if (bookmeModal.classList.contains('is-open')) {
+            closeBookmeModal();
+            return;
+          }
+          if (joinModal.classList.contains('is-open')) {
+            closeJoinModal();
+            return;
+          }
+          if (lightboxEl.classList.contains('is-open')) {
+            closeLightbox();
+            return;
+          }
+          if (drawerEl.classList.contains('is-open')) closeDrawer();
+        });
+
+        gridEl.addEventListener('click', function (e) {
+          var joinBtn = e.target.closest('.em-join-open');
+          if (joinBtn) {
+            e.preventDefault();
+            e.stopPropagation();
+            openByJoinId(joinBtn.getAttribute('data-join-id'));
+            return;
+          }
+          var card = e.target.closest('[data-event-id]');
+          if (!card) return;
+          openById(card.getAttribute('data-event-id'));
+        });
+        gridEl.addEventListener('keydown', function (e) {
+          if (e.key !== 'Enter' && e.key !== ' ') return;
+          if (e.target.closest('.em-join-open')) return;
+          var card = e.target.closest('[data-event-id]');
+          if (!card) return;
+          e.preventDefault();
+          openById(card.getAttribute('data-event-id'));
+        });
+
+        Promise.all([
+          fetch(CONTENT_API, { credentials: 'same-origin' }).then(function (r) { return r.json(); }).catch(function () { return null; }),
+          fetch(EVENTS_API).then(function (r) { return r.json(); }),
+        ])
+          .then(function (results) {
+            var contentJson = results[0];
+            var eventsJson = results[1];
+
+            siteContent =
+              contentJson && contentJson.ok && contentJson.data
+                ? contentJson.data
+                : { activeTemplate: 'alpha', navigation: {}, contact: {}, socials: {} };
+
+            applyTheme(siteContent.activeTemplate || 'alpha');
+            renderNav();
+            renderFooter();
+
+            if (!eventsJson || !eventsJson.ok || !Array.isArray(eventsJson.events)) {
+              throw new Error((eventsJson && eventsJson.error) || 'Failed to load');
+            }
+            renderEvents(eventsJson.events);
+          })
+          .catch(function () {
+            applyTheme('alpha');
+            renderNav();
+            renderFooter();
+            statusEl.textContent = 'Could not load events. Please try again later.';
+          });
+      })();
+    </script>
+  </body>
+</html>

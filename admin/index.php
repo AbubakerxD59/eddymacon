@@ -217,8 +217,317 @@ $authenticated = admin_is_authenticated();
     </style>
 <?php if ($authenticated): ?>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+    <link rel="stylesheet" href="vendor/flatpickr/flatpickr.min.css" />
+    <link rel="stylesheet" href="vendor/flatpickr/themes/dark.css" />
+    <link rel="stylesheet" href="vendor/quill/quill.snow.css" />
+    <link rel="stylesheet" href="vendor/glightbox/glightbox.min.css" />
+    <style>
+      /* Brand accents for Flatpickr in admin event form */
+      .flatpickr-calendar {
+        z-index: 4000 !important;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55);
+        font-family: Inter, sans-serif;
+      }
+      .flatpickr-months .flatpickr-month,
+      .flatpickr-current-month .flatpickr-monthDropdown-months,
+      .flatpickr-current-month input.cur-year {
+        color: #D4AF37;
+        fill: #D4AF37;
+      }
+      .flatpickr-months .flatpickr-prev-month,
+      .flatpickr-months .flatpickr-next-month {
+        fill: #D4AF37;
+        color: #D4AF37;
+      }
+      .flatpickr-months .flatpickr-prev-month:hover svg,
+      .flatpickr-months .flatpickr-next-month:hover svg {
+        fill: #fff;
+      }
+      .flatpickr-weekdays .flatpickr-weekday {
+        color: #888;
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 10px;
+      }
+      .flatpickr-day.selected,
+      .flatpickr-day.startRange,
+      .flatpickr-day.endRange,
+      .flatpickr-day.selected:hover,
+      .flatpickr-day.selected:focus {
+        background: #D4AF37;
+        border-color: #D4AF37;
+        color: #000;
+        font-weight: 700;
+      }
+      .flatpickr-day:hover {
+        background: rgba(212, 175, 55, 0.2);
+        border-color: transparent;
+        color: #D4AF37;
+      }
+      .flatpickr-day.today {
+        border-color: #D4AF37;
+      }
+      .flatpickr-day.today:hover,
+      .flatpickr-day.today:focus {
+        background: rgba(212, 175, 55, 0.2);
+        color: #D4AF37;
+        border-color: #D4AF37;
+      }
+      #em-event-date,
+      #em-event-start-time,
+      #em-event-end-time {
+        cursor: pointer;
+      }
+      .em-event-dropzone {
+        min-height: 140px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 0.25rem;
+      }
+      .em-event-dropzone input[type="file"] {
+        display: none;
+      }
+      /* Quill (event description) — dark admin theme */
+      .em-quill-host {
+        background: #020202;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        overflow: visible;
+      }
+      .em-quill-host .ql-toolbar.ql-snow {
+        border: 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        background: #0a0a0a;
+        font-family: Inter, sans-serif;
+        overflow: visible;
+      }
+      .em-quill-host .ql-container.ql-snow {
+        border: 0;
+        font-family: Inter, sans-serif;
+        font-size: 0.875rem;
+        min-height: 140px;
+        color: #fff;
+      }
+      .em-quill-host .ql-editor {
+        min-height: 140px;
+      }
+      .em-quill-host .ql-editor.ql-blank::before {
+        color: #666;
+        font-style: normal;
+      }
+      .em-quill-host .ql-stroke {
+        stroke: #999;
+      }
+      .em-quill-host .ql-fill {
+        fill: #999;
+      }
+      .em-quill-host .ql-picker {
+        color: #ccc;
+      }
+      .em-quill-host .ql-picker-options {
+        background: #111;
+        border-color: rgba(255, 255, 255, 0.12);
+        z-index: 50;
+      }
+      .em-quill-host button:hover .ql-stroke,
+      .em-quill-host .ql-picker-label:hover .ql-stroke,
+      .em-quill-host button.ql-active .ql-stroke {
+        stroke: #D4AF37;
+      }
+      .em-quill-host button:hover .ql-fill,
+      .em-quill-host button.ql-active .ql-fill {
+        fill: #D4AF37;
+      }
+      .em-quill-host .ql-editor a {
+        color: #D4AF37;
+      }
+      .em-quill-host .ql-color .ql-picker-options,
+      .em-quill-host .ql-background .ql-picker-options {
+        background: #111;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        padding: 6px;
+        width: 152px;
+        box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
+      }
+      .em-quill-host .ql-color .ql-picker-item,
+      .em-quill-host .ql-background .ql-picker-item {
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        margin: 2px;
+      }
+      .em-quill-host .ql-color .ql-picker-label svg .ql-stroke,
+      .em-quill-host .ql-background .ql-picker-label svg .ql-stroke {
+        stroke: #D4AF37;
+      }
+      .em-quill-host .ql-size .ql-picker-label,
+      .em-quill-host .ql-size .ql-picker-item {
+        color: #ccc;
+        font-size: 12px;
+      }
+      .em-quill-host .ql-size .ql-picker-options {
+        background: #111;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
+      }
+      .em-quill-host .ql-size .ql-picker-item:hover,
+      .em-quill-host .ql-size .ql-picker-item.ql-selected {
+        color: #D4AF37;
+      }
+      /* Event details preview modal */
+      .em-meta-icon {
+        width: 0.95rem;
+        height: 0.95rem;
+        flex-shrink: 0;
+        color: #d4af37;
+        opacity: 0.9;
+      }
+      .em-cover {
+        background: radial-gradient(ellipse at center, rgba(212, 175, 55, 0.12), transparent 70%),
+          #0a0a0a;
+      }
+      .em-event-preview-body {
+        overscroll-behavior: contain;
+      }
+      .em-event-description .ql-size-small {
+        font-size: 0.75em;
+      }
+      .em-event-description .ql-size-large {
+        font-size: 1.5em;
+      }
+      .em-event-description .ql-size-huge {
+        font-size: 2.5em;
+      }
+      .em-event-description p {
+        margin: 0 0 0.75rem;
+      }
+      .em-masonry {
+        column-count: 2;
+        column-gap: 0.6rem;
+      }
+      .em-masonry-item {
+        break-inside: avoid;
+        margin: 0 0 0.6rem;
+        display: block;
+        width: 100%;
+        border: 0;
+        padding: 0;
+        border-radius: 0.65rem;
+        overflow: hidden;
+        background: #111;
+        text-align: left;
+        cursor: zoom-in;
+      }
+      .em-masonry-item img {
+        display: block;
+        width: 100%;
+        height: auto;
+        transition: transform 0.25s ease, opacity 0.25s ease;
+      }
+      .em-masonry-item img:hover {
+        opacity: 0.92;
+        transform: scale(1.02);
+      }
+      .em-masonry-item video {
+        display: block;
+        width: 100%;
+        height: auto;
+        background: #000;
+        cursor: default;
+      }
+      .em-lightbox {
+        position: fixed;
+        inset: 0;
+        z-index: 3300;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1.25rem;
+        background: rgba(0, 0, 0, 0.88);
+        backdrop-filter: blur(8px);
+      }
+      .em-lightbox img {
+        max-width: min(96vw, 1100px);
+        max-height: 90vh;
+        width: auto;
+        height: auto;
+        object-fit: contain;
+        border-radius: 0.5rem;
+        box-shadow: 0 24px 80px rgba(0, 0, 0, 0.65);
+      }
+      .em-lightbox-close {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        z-index: 1;
+        padding: 0.5rem;
+        color: rgba(255, 255, 255, 0.7);
+        background: transparent;
+        border: 0;
+        cursor: pointer;
+        transition: color 0.2s ease;
+      }
+      .em-lightbox-close:hover {
+        color: #fff;
+      }
+      /* Thin gold scrollbars (admin) */
+      html,
+      body,
+      #root,
+      #root *,
+      .em-admin-modal-dialog,
+      .em-quill-host .ql-editor {
+        scrollbar-width: thin;
+        scrollbar-color: #D4AF37 rgba(255, 255, 255, 0.06);
+      }
+      html::-webkit-scrollbar,
+      body::-webkit-scrollbar,
+      #root::-webkit-scrollbar,
+      #root *::-webkit-scrollbar,
+      .em-admin-modal-dialog::-webkit-scrollbar,
+      .em-quill-host .ql-editor::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+      }
+      html::-webkit-scrollbar-track,
+      body::-webkit-scrollbar-track,
+      #root::-webkit-scrollbar-track,
+      #root *::-webkit-scrollbar-track,
+      .em-admin-modal-dialog::-webkit-scrollbar-track,
+      .em-quill-host .ql-editor::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.04);
+        border-radius: 999px;
+      }
+      html::-webkit-scrollbar-thumb,
+      body::-webkit-scrollbar-thumb,
+      #root::-webkit-scrollbar-thumb,
+      #root *::-webkit-scrollbar-thumb,
+      .em-admin-modal-dialog::-webkit-scrollbar-thumb,
+      .em-quill-host .ql-editor::-webkit-scrollbar-thumb {
+        background: linear-gradient(180deg, #E5C158 0%, #D4AF37 55%, #B8860B 100%);
+        border-radius: 999px;
+        border: 1px solid rgba(0, 0, 0, 0.25);
+      }
+      html::-webkit-scrollbar-thumb:hover,
+      body::-webkit-scrollbar-thumb:hover,
+      #root::-webkit-scrollbar-thumb:hover,
+      #root *::-webkit-scrollbar-thumb:hover,
+      .em-admin-modal-dialog::-webkit-scrollbar-thumb:hover,
+      .em-quill-host .ql-editor::-webkit-scrollbar-thumb:hover {
+        background: linear-gradient(180deg, #F0D278 0%, #E5C158 50%, #D4AF37 100%);
+      }
+      html::-webkit-scrollbar-corner,
+      body::-webkit-scrollbar-corner,
+      #root::-webkit-scrollbar-corner,
+      #root *::-webkit-scrollbar-corner {
+        background: transparent;
+      }
+    </style>
     <script>window.__ADMIN_AUTHENTICATED__ = true;</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="vendor/flatpickr/flatpickr.min.js"></script>
+    <script src="vendor/quill/quill.js"></script>
+    <script src="vendor/glightbox/glightbox.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script>
       toastr.options = {

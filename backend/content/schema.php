@@ -33,11 +33,55 @@ function content_ensure_schema(PDO $pdo): void
 
     $stmt = $pdo->prepare('SELECT id FROM site_content WHERE id = ? LIMIT 1');
     $stmt->execute(['macon_v1']);
-    if ($stmt->fetch()) {
+    if (!$stmt->fetch()) {
+        $defaults = content_default_data();
+        $ins = $pdo->prepare('INSERT INTO site_content (id, data) VALUES (?, ?)');
+        $ins->execute(['macon_v1', json_encode($defaults, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES)]);
         return;
     }
 
-    $defaults = content_default_data();
-    $ins = $pdo->prepare('INSERT INTO site_content (id, data) VALUES (?, ?)');
-    $ins->execute(['macon_v1', json_encode($defaults, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES)]);
+    content_migrate_nav_events($pdo);
+}
+
+/**
+ * Replace INVESTMENTS nav link with EVENTS → events/
+ */
+function content_migrate_nav_events(PDO $pdo): void
+{
+    $stmt = $pdo->prepare('SELECT data FROM site_content WHERE id = ? LIMIT 1');
+    $stmt->execute(['macon_v1']);
+    $row = $stmt->fetch();
+    if (!$row) {
+        return;
+    }
+
+    $data = json_decode((string) $row['data'], true);
+    if (!is_array($data) || !isset($data['navigation']['links']) || !is_array($data['navigation']['links'])) {
+        return;
+    }
+
+    $changed = false;
+    foreach ($data['navigation']['links'] as &$link) {
+        if (!is_array($link)) {
+            continue;
+        }
+        $label = strtoupper(trim((string) ($link['label'] ?? '')));
+        $href = (string) ($link['href'] ?? '');
+        if ($label === 'INVESTMENTS' || $href === '#investments') {
+            $link['label'] = 'EVENTS';
+            $link['href'] = 'events/';
+            $changed = true;
+        }
+    }
+    unset($link);
+
+    if (!$changed) {
+        return;
+    }
+
+    $upd = $pdo->prepare('UPDATE site_content SET data = ? WHERE id = ?');
+    $upd->execute([
+        json_encode($data, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES),
+        'macon_v1',
+    ]);
 }
