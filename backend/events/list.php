@@ -63,6 +63,15 @@ try {
         $row['id'] = (int) $row['id'];
         $row['price'] = $row['price'] !== null ? (float) $row['price'] : null;
 
+        // Public published list: only expose webinar link for free online events
+        if ($status === 'published') {
+            $isOnline = strtolower((string) ($row['type'] ?? '')) === 'online';
+            $isFree = $row['price'] === null || (float) $row['price'] === 0.0;
+            if (!$isOnline || !$isFree) {
+                $row['webinar_link'] = null;
+            }
+        }
+
         $mediaStmt->execute([(int) $row['id']]);
         $media = $mediaStmt->fetchAll();
         foreach ($media as &$m) {

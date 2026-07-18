@@ -853,6 +853,21 @@
           return '$' + n.toLocaleString('en-US', { maximumFractionDigits: 2 });
         }
 
+        function isFreeEvent(ev) {
+          if (!ev) return false;
+          if (ev.price === null || ev.price === undefined || ev.price === '') return true;
+          var n = Number(ev.price);
+          return !isNaN(n) && n === 0;
+        }
+
+        function shouldShowWebinarLink(ev) {
+          return (
+            String(ev && ev.type ? ev.type : '').toLowerCase() === 'online' &&
+            isFreeEvent(ev) &&
+            !!(ev.webinar_link && String(ev.webinar_link).trim())
+          );
+        }
+
         function locationLabel(ev) {
           return String(ev.type || '').toLowerCase() === 'online'
             ? 'Virtual Event'
@@ -1313,6 +1328,20 @@
           var price = formatPrice(ev.price);
           var desc = (ev.description || '').trim();
           var accent = (theme && theme.accentLabel) || 'text-gold-500';
+          var webinar = shouldShowWebinarLink(ev) ? String(ev.webinar_link).trim() : '';
+          var webinarRow = webinar
+            ? metaRow(
+                ICONS.link,
+                'Webinar',
+                '<a href="' +
+                  escapeHtml(webinar) +
+                  '" target="_blank" rel="noopener noreferrer" class="' +
+                  accent +
+                  ' hover:underline break-all">' +
+                  escapeHtml(webinar) +
+                  '</a>'
+              )
+            : '';
 
           var coverBlock = cover
             ? '<img src="' + escapeHtml(cover) + '" alt="" class="w-full h-full object-cover" />'
@@ -1339,6 +1368,7 @@
                 metaRow(ICONS.clock, 'Time', start + ' – ' + end) +
                 metaRow(ICONS.mapPin, 'Location', location) +
                 metaRow(ICONS.tag, 'Price', price) +
+                webinarRow +
               '</div>' +
               descBlock +
               mediaHtml(ev) +
